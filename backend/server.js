@@ -16,7 +16,10 @@ connectDB();
 const app = express();
 const port = process.env.PORT || 5000;
 
-const whitelist = ["http://localhost:3000"];
+const whitelist = [
+  "http://localhost:3000",
+  "https://snap-shop-lilac.vercel.app",
+];
 var corsOptions = {
   origin: whitelist[0],
   credentials: true,
