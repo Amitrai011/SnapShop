@@ -21,7 +21,7 @@ const whitelist = [
   "https://snap-shop-lilac.vercel.app",
 ];
 var corsOptions = {
-  origin: whitelist[0],
+  origin: whitelist,
   credentials: true,
 };
 
