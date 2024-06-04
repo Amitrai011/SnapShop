@@ -18,7 +18,7 @@ const port = process.env.PORT || 5000;
 
 const whitelist = [
   "http://localhost:3000",
-  "https://snap-shop-lilac.vercel.app",
+  "https://snap-shop-frontend.vercel.app",
 ];
 var corsOptions = {
   origin: whitelist,
