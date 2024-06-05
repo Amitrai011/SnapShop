@@ -6,6 +6,7 @@ import User from "../models/userModel.js";
 const protect = async (req, res, next) => {
   // Read the JWT from the cookie
   let token = req.cookies.jwt;
+  console.log("token: ", token);
 
   if (token) {
     try {
@@ -29,8 +30,9 @@ const admin = (req, res, next) => {
   if (req.user && req.user.isAdmin) {
     next();
   } else {
-    res.status(401);
-    throw new Error("Not authorized as a admin");
+    res.status(401).json({ message: "Not authorized as a admin" });
+    // res.status(401);
+    // throw new Error("Not authorized as a admin");
   }
 };
 
