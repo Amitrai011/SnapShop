@@ -7,6 +7,7 @@ const ordersApiSlice = apiSlice.injectEndpoints({
       query: (order) => ({
         url: ORDERS_URL,
         method: "POST",
+        withCredntials: true,
         credentials: "include",
         body: { ...order },
       }),
@@ -15,6 +16,7 @@ const ordersApiSlice = apiSlice.injectEndpoints({
       query: (orderId) => ({
         method: "GET",
         url: `${ORDERS_URL}/${orderId}`,
+        withCredntials: true,
         credentials: "include",
       }),
       keepUnusedDataFor: 5,
@@ -23,6 +25,7 @@ const ordersApiSlice = apiSlice.injectEndpoints({
       query: ({ orderId, details }) => ({
         method: "PUT",
         url: `${ORDERS_URL}/${orderId}/pay`,
+        withCredntials: true,
         credentials: "include",
         body: { ...details },
       }),
@@ -31,6 +34,7 @@ const ordersApiSlice = apiSlice.injectEndpoints({
       query: () => ({
         method: "GET",
         url: PAYPAL_URL,
+        withCredntials: true,
         credentials: "include",
       }),
       keepUnusedDataFor: 5,
@@ -38,6 +42,7 @@ const ordersApiSlice = apiSlice.injectEndpoints({
     getMyOrders: builder.query({
       query: () => ({
         url: `${ORDERS_URL}/myorders`,
+        withCredntials: true,
         credentials: "include",
         method: "GET",
       }),
@@ -46,6 +51,7 @@ const ordersApiSlice = apiSlice.injectEndpoints({
     getOrders: builder.query({
       query: () => ({
         url: ORDERS_URL,
+        withCredntials: true,
         credentials: "include",
         method: "GET",
       }),
@@ -55,6 +61,7 @@ const ordersApiSlice = apiSlice.injectEndpoints({
       query: (orderId) => ({
         url: `${ORDERS_URL}/${orderId}/deliver`,
         method: "PUT",
+        withCredntials: true,
         credentials: "include",
       }),
     }),

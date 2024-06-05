@@ -24,6 +24,7 @@ export const productsApiSlice = apiSlice.injectEndpoints({
       query: () => ({
         url: PRODUCTS_URL,
         method: "POST",
+        withCredntials: true,
         credentials: "include",
       }),
       invalidatesTags: ["Product"],
@@ -32,6 +33,7 @@ export const productsApiSlice = apiSlice.injectEndpoints({
       query: (data) => ({
         url: `${PRODUCTS_URL}/${data.productId}`,
         method: "PUT",
+        withCredntials: true,
         credentials: "include",
         body: data,
       }),
@@ -41,6 +43,7 @@ export const productsApiSlice = apiSlice.injectEndpoints({
       query: (data) => ({
         url: UPLOAD_URL,
         method: "POST",
+        withCredntials: true,
         credentials: "include",
         body: data,
       }),
@@ -49,12 +52,14 @@ export const productsApiSlice = apiSlice.injectEndpoints({
       query: (productId) => ({
         url: `${PRODUCTS_URL}/${productId}`,
         method: "DELETE",
+        withCredntials: true,
         credentials: "include",
       }),
     }),
     createReview: builder.mutation({
       query: (data) => ({
         url: `${PRODUCTS_URL}/${data.productId}/reviews`,
+        withCredntials: true,
         credentials: "include",
         method: "POST",
         body: data,
