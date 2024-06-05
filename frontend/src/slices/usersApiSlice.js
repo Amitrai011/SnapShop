@@ -7,6 +7,7 @@ const usersApiSlice = apiSlice.injectEndpoints({
       query: (data) => ({
         url: `${USERS_URL}/auth`,
         method: "POST",
+        withCredntials: true,
         credentials: "include",
         body: data,
       }),
@@ -15,6 +16,7 @@ const usersApiSlice = apiSlice.injectEndpoints({
       query: (data) => ({
         url: `${USERS_URL}/logout`,
         method: "POST",
+        withCredntials: true,
         credentials: "include",
         body: data,
       }),
@@ -23,6 +25,7 @@ const usersApiSlice = apiSlice.injectEndpoints({
       query: (data) => ({
         url: `${USERS_URL}`,
         method: "POST",
+        withCredntials: true,
         credentials: "include",
         body: data,
       }),
@@ -31,6 +34,7 @@ const usersApiSlice = apiSlice.injectEndpoints({
       query: (data) => ({
         url: `${USERS_URL}/profile`,
         method: "PUT",
+        withCredntials: true,
         credentials: "include",
         body: data,
       }),
@@ -39,6 +43,7 @@ const usersApiSlice = apiSlice.injectEndpoints({
       query: () => ({
         url: USERS_URL,
         method: "GET",
+        withCredntials: true,
         credentials: "include",
       }),
       providesTags: ["User"],
@@ -47,6 +52,7 @@ const usersApiSlice = apiSlice.injectEndpoints({
     deleteUser: builder.mutation({
       query: (userId) => ({
         url: `${USERS_URL}/${userId}`,
+        withCredntials: true,
         credentials: "include",
         method: "DELETE",
       }),
@@ -55,6 +61,7 @@ const usersApiSlice = apiSlice.injectEndpoints({
       query: (userId) => ({
         url: `${USERS_URL}/${userId}`,
         method: "GET",
+        withCredntials: true,
         credentials: "include",
       }),
       keepUnusedDataFor: 5,
@@ -64,6 +71,7 @@ const usersApiSlice = apiSlice.injectEndpoints({
         url: `${USERS_URL}/${data.userId}`,
         method: "PUT",
         body: data,
+        withCredntials: true,
         credentials: "include",
       }),
       invalidatesTags: ["User"],

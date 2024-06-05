@@ -27,11 +27,11 @@ var corsOptions = {
 
 app.use(cors(corsOptions));
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
 // Cookie parser middleware
 app.use(cookieParser());
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/products", productRoutes);
 app.use("/api/users", userRoutes);
