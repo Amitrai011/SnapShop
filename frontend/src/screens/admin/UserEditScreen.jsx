@@ -22,7 +22,7 @@ const UserEditScreen = () => {
   const {
     data: user,
     isLoading,
-    isError,
+    error,
     refetch,
   } = useGetUserDetailsQuery(userId);
   const [updateUser] = useUpdateUserMutation();
@@ -56,8 +56,10 @@ const UserEditScreen = () => {
         <h1>Edit User</h1>
         {isLoading ? (
           <Loader />
-        ) : isError ? (
-          <Message variant="danger">User Not found</Message>
+        ) : error ? (
+          <Message variant="danger">
+            {error?.data?.message || error?.error}
+          </Message>
         ) : (
           <Form onSubmit={submitHandler}>
             <Form.Group controlId="name" className="my-2">

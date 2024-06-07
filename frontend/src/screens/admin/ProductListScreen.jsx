@@ -13,7 +13,7 @@ import Paginate from "../../components/Paginate";
 
 const ProductListScreen = () => {
   const { pageNumber } = useParams();
-  const { data, isLoading, isError, refetch } = useGetProductsQuery({
+  const { data, isLoading, error, refetch } = useGetProductsQuery({
     pageNumber,
   });
   const [createProduct, { isLoading: loadingCreate }] =
@@ -62,8 +62,10 @@ const ProductListScreen = () => {
 
       {isLoading ? (
         <Loader />
-      ) : isError ? (
-        <Message variant="danger">Not found</Message>
+      ) : error ? (
+        <Message variant="danger">
+          {error?.data?.message || error?.error}
+        </Message>
       ) : (
         <>
           <Table striped responsive hover className="table-sm">

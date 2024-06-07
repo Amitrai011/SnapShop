@@ -6,7 +6,6 @@ import User from "../models/userModel.js";
 const protect = async (req, res, next) => {
   // Read the JWT from the cookie
   let token = req.cookies.jwt;
-  console.log("token: ", token);
 
   if (token) {
     try {

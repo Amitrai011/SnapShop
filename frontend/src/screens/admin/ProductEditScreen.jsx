@@ -26,7 +26,7 @@ const ProductEditScreen = () => {
   const {
     data: product,
     isLoading,
-    isError,
+    error,
     refetch,
   } = useGetProductDetailsQuery(productId);
 
@@ -90,8 +90,10 @@ const ProductEditScreen = () => {
         {loadingUpdate && <Loader />}
         {isLoading ? (
           <Loader />
-        ) : isError ? (
-          <Message variant="danger">Product Not found</Message>
+        ) : error ? (
+          <Message variant="danger">
+            {error?.data?.message || error?.error}
+          </Message>
         ) : (
           <Form onSubmit={submitHandler}>
             <Form.Group controlId="name" className="my-2">

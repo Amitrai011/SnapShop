@@ -21,7 +21,7 @@ const ProfileScreen = () => {
 
   const [updateProfile, { isLoading: loadingUpdateProfile }] =
     useUpdateProfileMutation();
-  const { data: orders, isLoading, isError } = useGetMyOrdersQuery();
+  const { data: orders, isLoading, error } = useGetMyOrdersQuery();
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -100,8 +100,10 @@ const ProfileScreen = () => {
         <h2>My Orders</h2>
         {isLoading ? (
           <Loader />
-        ) : isError ? (
-          <Message variant="danger">Order Not found</Message>
+        ) : error ? (
+          <Message variant="danger">
+            {error?.data?.message || error?.error}
+          </Message>
         ) : (
           <Table striped hover responsive className="table-sm">
             <thead>

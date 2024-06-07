@@ -31,7 +31,7 @@ const ProductScreen = () => {
   const {
     data: product,
     isLoading,
-    isError,
+    error,
     refetch,
   } = useGetProductDetailsQuery(productId);
 
@@ -72,9 +72,9 @@ const ProductScreen = () => {
 
       {isLoading ? (
         <Loader />
-      ) : isError ? (
+      ) : error ? (
         <Message variant="danger">
-          {isError?.data?.message || isError?.isError}
+          {error?.data?.message || error?.error}
         </Message>
       ) : (
         <>

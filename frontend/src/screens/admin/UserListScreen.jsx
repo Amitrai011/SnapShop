@@ -10,7 +10,7 @@ import {
 } from "../../slices/usersApiSlice";
 
 const UserListScreen = () => {
-  const { data: users, isError, isLoading, refetch } = useGetUsersQuery();
+  const { data: users, error, isLoading, refetch } = useGetUsersQuery();
   const [deleteUser, { isLoading: loadingDelete }] = useDeleteUserMutation();
 
   const deleteHandler = async (id) => {
@@ -31,8 +31,8 @@ const UserListScreen = () => {
       {loadingDelete && <Loader />}
       {isLoading ? (
         <Loader />
-      ) : isError ? (
-        <Message>User Not found</Message>
+      ) : error ? (
+        <Message>{error?.data?.message || error?.error}</Message>
       ) : (
         <Table hover responsive striped className="table-sm">
           <thead>

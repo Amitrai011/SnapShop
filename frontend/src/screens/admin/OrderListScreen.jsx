@@ -7,15 +7,17 @@ import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 
 const OrderListScreen = () => {
-  const { data: orders, isLoading, isError } = useGetOrdersQuery();
+  const { data: orders, isLoading, error } = useGetOrdersQuery();
 
   return (
     <>
       <h1>Orders</h1>
       {isLoading ? (
         <Loader />
-      ) : isError ? (
-        <Message variant="danger">Orders Not found</Message>
+      ) : error ? (
+        <Message variant="danger">
+          {error?.data?.message || error?.error}
+        </Message>
       ) : (
         <Table striped responsive hover className="table-sm">
           <thead>
